@@ -18,10 +18,22 @@ public class Dragon {
         } else if (n <= k) {
             out.println("NO");
         } else {
+            /*
             int round = n - k; // сколько голов сносит за раунд
             int first = m - n; // сколько голов осталось первый раз
             int fullRounds = (first + round - 1) / round; // всего раундов
             out.println(fullRounds + 1);
+            */
+            int fullRounds = 0;
+
+            while (m > 0) {
+                fullRounds++;
+                m = m - n; // осталось голов
+                if (m > 0)  // если хоть одна голова осталась
+                    m = m + k; // регенерируем головы
+            }
+
+            out.println(fullRounds);
         }
         out.close();
     }
